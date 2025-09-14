@@ -37,6 +37,14 @@ let helloExpression = function () {
 // }, 3000);
 
 //c. setTimeout với arrow function
-setTimeout(() => {
-  console.log("Hello");
-}, 3000);
+// setTimeout(() => {
+//   console.log("Hello");
+// }, 3000);
+
+// 3. Sử dụng với tham số
+// Ví dụ: với Arrow function
+let helloArrow2 = (yourName) => {
+  console.log("Hello " + yourName);
+};
+// helloArrow2("Nam");
+setTimeout(helloArrow2, 3000, "Nam");
