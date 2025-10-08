@@ -1,39 +1,22 @@
-// 34.13 - javascript inheritance es6
-// Định nghĩa lớp cơ sở School
-class School {
-  constructor(id, name, birthYear) {
-    this.id = id;
-    this.name = name;
-    this.birthYear = birthYear;
+// 34.12 Static method
+class Circle {
+  constructor(radius) {
+    this.radius = radius;
   }
 
-  // Phương thức của lớp school
-  calcAge(currentYear) {
-    return currentYear - this.birthYear;
+  // instance method
+  static draw() {
+    console.log("Phương thức draw được gọi");
   }
 }
 
-// Lớp Student kế thừa từ lớp School (có thêm thuộc tính và phương thức riêng)
-class Student extends School {
-  constructor(id, name, birthYear, major) {
-    super(id, name, birthYear);
-    this.major = major;
-  }
+// Tạo đối tượng
+const c1 = new Circle(10);
+const c2 = new Circle(5);
 
-  // Phương thức của lớp student
-  study() {
-    console.log(`${this.name}`);
-  }
-}
+c1.draw();
+c2.draw();
 
-// Tạo đối tượng của lớp School
-const p1 = new School("P2004001", "jacky", 2000);
-// Truy cập thuộc tính và phương thức của class School
-console.log(p1.id);
-console.log(p1.birthYear);
-console.log(p1.calcAge(2024));
-
-// Tạo đối
-// Truy cập thuộc tính và phương thức
-console.log(s1.major);
-s1.study();
+// Call static method
+console.log(Circle.calcArea(10));
+console.log(Circle.calcArea(5));
