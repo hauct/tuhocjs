@@ -7,32 +7,67 @@
 */
 
 class Wallet {
+  #pin; // Private fields
+  #balance; // Private fields;
+  #isPinEntered = false;
   constructor(bankName, pin) {
     this.bankName = bankName;
-    this._pin = pin;
-    this._balance = 0; // Tài khoản bằng 0 lúc tạo thẻ
+    this.#pin = pin;
+    this.#balance = 0; // Tài khoản bằng 0 lúc tạo thẻ
   }
 
   // Phương thức gửi tiền vào tài khoản
   deposit(value) {
-    this._balance += value;
+    if (!this.#isPinEntered) {
+      console.log("Kiểm tra lại mã pin");
+      return;
+    }
+    this.#balance += value;
+  }
+
+  // Private methods
+  #validatePin(pin) {
+    return this.#pin === pin;
+  }
+
+  // Public method
+  enterPin(pin) {
+    if (this.#validatePin(pin)) {
+      this.#isPinEntered = true;
+    } else {
+      console.log("Invalid pin.");
+    }
   }
 
   // Rút tiền
   withdraw(value) {
-    if (value > this._balance) {
+    if (!this.#isPinEntered) {
+      console.log("Kiểm tra lại mã pin");
+      return;
+    }
+    if (value > this.#balance) {
       console.log("Số tiền trong tài khoản không đủ");
     } else {
-      this._balance -= value;
+      this.#balance -= value;
       console.log("Rút tiền thành công");
     }
+  }
+
+  // getter
+  get balance() {
+    if (!this.#isPinEntered) {
+      console.log("Kiểm tra lại mã pin");
+      return;
+    }
+    return this.#balance;
   }
 }
 
 // Tạo đối tượng
 const wallet = new Wallet("MB bank", "1234");
 
-console.log(wallet._balance);
+// Nhập mã pin
+wallet.enterPin("1234");
 
 // Gửi tiền
 wallet.deposit(1000);
@@ -41,5 +76,7 @@ wallet.deposit(1000);
 wallet.withdraw(250);
 
 // Xem tài khoản, pin
-console.log(wallet._balance);
-console.log(wallet._pin);
+// console.log(wallet.#balance);
+// console.log(wallet.#pin);
+
+console.log(wallet.balance);
