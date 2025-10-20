@@ -10,7 +10,7 @@ let baseUrl =
 //  Tạo phần tử con mới
 
 // Thêm phần tử con vào container
-for (let i = 1; i <= 3; i++) {
+for (let i = 1; i <= 151; i++) {
   // Tạo một khối div để chứa phần tử img và số thứ tự
   const newDiv = document.createElement("div");
   // Thêm div vào cuối container
