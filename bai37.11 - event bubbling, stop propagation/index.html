@@ -8,17 +8,16 @@
   </head>
   <body>
     <body>
-      <form action="./login" id="login">
-        <input type="text" placeholder="Enter your name" id="name" />
-        <input type="password" name="" id="password" />
-        <input type="submit" value="Submit" />
-      </form>
-
-      <ul id="list">
-        List user
-      </ul>
-
-      <a href="https://tuhoc.cc"></a>
+      <!-- Ví dụ về Event Bubbling -->
+      <div id="grandparent">
+        <p>Grand parent</p>
+        <div id="parent">
+          <p>Parent</p>
+          <div id="child">
+            <p>Child</p>
+          </div>
+        </div>
+      </div>
     </body>
     <!-- js -->
     <script src="./main.js"></script>
